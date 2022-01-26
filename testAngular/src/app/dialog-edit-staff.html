@@ -1,0 +1,89 @@
+<h2 mat-dialog-title>Add Staff</h2>
+<mat-dialog-content class="mat-typography">
+
+
+
+    <table class="example-full-width" cellspacing="0">
+        <tr>
+            <td>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Email</mat-label>
+                    <input type="email" matInput [(ngModel)]="user.email" [formControl]="emailFormControl"
+                        placeholder="Ex. pat@example.com">
+                    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                        Please enter a valid email address
+                    </mat-error>
+                    <mat-error *ngIf="emailFormControl.hasError('required')">
+                        Email is <strong>required</strong>
+                    </mat-error>
+                </mat-form-field>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <mat-radio-group aria-label="Select an option" style="margin-right: 20px;" [(ngModel)]="user.civility">
+                    <label style="margin-right: 15px;">Civility :</label>
+                    <mat-radio-button value="MR" style="margin-right: 10px;">Mr</mat-radio-button>
+                    <mat-radio-button value="MRS">Mrs</mat-radio-button>
+                </mat-radio-group>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width" appearance="fill" style="margin-right: 10px;">
+                    <mat-label>First name</mat-label>
+                    <input matInput type="text" [(ngModel)]="user.first_name">
+                </mat-form-field>
+            </td>
+            <td>
+                <mat-form-field class="example-full-width" appearance="fill" style="margin-right: 10px;">
+                    <mat-label>Last name</mat-label>
+                    <input matInput type="text" [(ngModel)]="user.last_name">
+                </mat-form-field>
+            </td>
+            <td>
+                <label class="block text-left" style="max-width: 400px;">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Select User Status</mat-label>
+                        <select matNativeControl [(ngModel)]="user.user_status">
+                            <option value="" selected></option>
+                            <option>active</option>
+                            <option>pending</option>
+                        </select>
+                    </mat-form-field>
+                </label>
+            </td>
+        </tr>
+        <tr style="margin-top: 25px;">
+            <td></td>
+            <td>
+                <label class="block text-left" style="max-width: 400px;">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Select Entity</mat-label>
+                        <select matNativeControl [(ngModel)]="user.entity">
+                            <option value="" selected></option>
+                            <option>Company</option>
+                        </select>
+                    </mat-form-field>
+                </label>
+            </td>
+            <td>
+                <label class="block text-left" style="max-width: 400px;">
+                    <mat-form-field appearance="fill">
+                        <mat-label>Select User Type</mat-label>
+                        <select matNativeControl [(ngModel)]="user.user_type">
+                            <option value="" selected></option>
+                            <option>Mentor</option>
+                        </select>
+                    </mat-form-field>
+                </label>
+            </td>
+
+        </tr>
+    </table>
+
+
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button [mat-dialog-close]="true" cdkFocusInitial color="primary"
+        (click)="editUser()">Edit</button>
+</mat-dialog-actions>
